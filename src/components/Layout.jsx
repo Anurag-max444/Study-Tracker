@@ -1,3 +1,4 @@
+import { useTheme } from '../hooks/useTheme'
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useState } from 'react'
@@ -17,6 +18,7 @@ export default function Layout() {
   const { user, signOut } = useAuth()
   const nav = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { theme, toggle } = useTheme()
 
   async function handleSignOut() {
     await signOut()
@@ -57,6 +59,25 @@ export default function Layout() {
           {user?.email}
         </div>
         <button onClick={handleSignOut} style={{ width: '100%', padding: '8px 12px', background: 'transparent', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 13, color: 'var(--gray-500)', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8 }}>
+        <button
+          onClick={toggle}
+          style={{
+            width: '100%',
+            padding: '8px 12px',
+            background: 'transparent',
+            border: '1px solid var(--gray-200)',
+            borderRadius: 8,
+            fontSize: 13,
+            color: 'var(--gray-500)',
+            cursor: 'pointer',
+            textAlign: 'left',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            marginBottom: 8
+          }}>
+          {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+        </button>
           🚪 Logout
         </button>
       </div>
@@ -73,7 +94,22 @@ export default function Layout() {
       {/* Mobile header */}
       <header style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 56, background: '#fff', borderBottom: '1px solid var(--gray-100)', display: 'flex', alignItems: 'center', padding: '0 1rem', gap: 12, zIndex: 40 }}>
         <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', padding: 4 }}>☰</button>
-        <div style={{ fontFamily: 'var(--mono)', fontWeight: 700, color: 'var(--teal-dark)', fontSize: 16 }}>📚 StudyVault</div>
+        <div style={{ fontFamily: 'var(--mono)', fontWeight: 700, color: 'var(--teal-dark)', fontSize: 16 }}>📚 StudyVault
+        <button
+          onClick={toggle}
+          style={{
+            marginLeft: 'auto',
+            background: 'none',
+            border: '1px solid var(--gray-200)',
+            borderRadius: 8,
+            padding: '5px 10px',
+            cursor: 'pointer',
+            fontSize: 16,
+            color: 'var(--gray-600)'
+          }}>
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
+        </div>
       </header>
 
       {/* Mobile Drawer */}
