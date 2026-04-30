@@ -43,7 +43,7 @@ export default function NotesPage() {
     return matchSubject && matchSearch
   })
 
-  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: '#fff', width: '100%' }
+  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: 'var(--card-bg)', width: '100%' }
 
   return (
     <div>
@@ -51,7 +51,7 @@ export default function NotesPage() {
       <p style={{ color: 'var(--gray-500)', fontSize: 14, marginBottom: '1.5rem' }}>Formula, doubt, ya important point — sab yahan save karo</p>
 
       {/* Add note */}
-      <form onSubmit={addNote} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.25rem', boxShadow: 'var(--shadow)' }}>
+      <form onSubmit={addNote} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.25rem', boxShadow: 'var(--shadow)' }}>
         <textarea
           value={text} onChange={e => setText(e.target.value)}
           placeholder="Note ya doubt likho... (e.g. Profit % = Profit/CP × 100)"
@@ -81,7 +81,7 @@ export default function NotesPage() {
       {loading && <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--gray-400)' }}>Loading...</div>}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
         {filtered.map(note => (
-          <div key={note.id} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', boxShadow: 'var(--shadow)', position: 'relative', borderLeft: `3px solid ${COLORS[note.subject] || '#64748b'}` }}>
+          <div key={note.id} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', boxShadow: 'var(--shadow)', position: 'relative', borderLeft: `3px solid ${COLORS[note.subject] || '#64748b'}` }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
               <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 20, background: `${COLORS[note.subject] || '#64748b'}18`, color: COLORS[note.subject] || '#64748b', fontWeight: 600 }}>{note.subject}</span>
               <button onClick={() => deleteNote(note.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--gray-300)', fontSize: 14, padding: 2 }} onMouseEnter={e => e.target.style.color = '#ef4444'} onMouseLeave={e => e.target.style.color = 'var(--gray-300)'}>✕</button>
@@ -91,7 +91,7 @@ export default function NotesPage() {
           </div>
         ))}
         {!loading && filtered.length === 0 && (
-          <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: '#fff', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
+          <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: 'var(--card-bg)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>📝</div>
             <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--gray-400)', marginBottom: 4 }}>Koi note nahi</div>
             <div style={{ fontSize: 13 }}>Upar se pehla note likho!</div>

@@ -57,7 +57,7 @@ export default function GoalsPage() {
     setGoals(goals.filter(g => g.id !== id))
   }
 
-  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: '#fff', width: '100%' }
+  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: 'var(--card-bg)', width: '100%' }
 
   const grouped = { short: goals.filter(g => g.type === 'short'), medium: goals.filter(g => g.type === 'medium'), long: goals.filter(g => g.type === 'long') }
 
@@ -72,14 +72,14 @@ export default function GoalsPage() {
           <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--teal-dark)', marginBottom: '0.75rem' }}>🚀 Quick start — common goals add karo</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {PRESET_GOALS.map((g, i) => (
-              <button key={i} onClick={() => addPreset(g)} style={{ padding: '6px 12px', background: '#fff', border: '1px solid var(--teal-50)', borderRadius: 8, fontSize: 13, color: 'var(--teal-dark)', cursor: 'pointer', fontWeight: 500 }}>{g.label}</button>
+              <button key={i} onClick={() => addPreset(g)} style={{ padding: '6px 12px', background: 'var(--card-bg)', border: '1px solid var(--teal-50)', borderRadius: 8, fontSize: 13, color: 'var(--teal-dark)', cursor: 'pointer', fontWeight: 500 }}>{g.label}</button>
             ))}
           </div>
         </div>
       )}
 
       {/* Add goal */}
-      <form onSubmit={addGoal} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow)' }}>
+      <form onSubmit={addGoal} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow)' }}>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <input style={{ ...inp, flex: 2, minWidth: 160 }} value={label} onChange={e => setLabel(e.target.value)} placeholder="Naya goal likho..." />
           <select style={{ ...inp, width: 'auto', minWidth: 160 }} value={type} onChange={e => setType(e.target.value)}>
@@ -99,7 +99,7 @@ export default function GoalsPage() {
             {grouped[v].map(goal => {
               const daysLeft = goal.target_date ? differenceInDays(new Date(goal.target_date), new Date()) : null
               return (
-                <div key={goal.id} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem 1.25rem', boxShadow: 'var(--shadow)', borderLeft: `3px solid ${TYPE_COLORS[v]}` }}>
+                <div key={goal.id} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem 1.25rem', boxShadow: 'var(--shadow)', borderLeft: `3px solid ${TYPE_COLORS[v]}` }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 8 }}>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--gray-800)' }}>{goal.label}</div>
@@ -131,7 +131,7 @@ export default function GoalsPage() {
       ))}
 
       {!loading && goals.length === 0 && (
-        <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: '#fff', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
+        <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: 'var(--card-bg)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
           <div style={{ fontSize: 40, marginBottom: 12 }}>🎯</div>
           <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--gray-400)', marginBottom: 4 }}>Koi goal set nahi hai</div>
           <div style={{ fontSize: 13 }}>Upar se pehla goal add karo ya preset use karo</div>

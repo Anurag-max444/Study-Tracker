@@ -53,8 +53,8 @@ export default function TasksPage() {
     return true
   })
 
-  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: '#fff', color: 'var(--gray-800)', width: '100%' }
-  const btn = (active) => ({ padding: '7px 14px', border: `1px solid ${active ? 'var(--teal)' : 'var(--gray-200)'}`, borderRadius: 8, background: active ? 'var(--teal-bg)' : '#fff', color: active ? 'var(--teal-dark)' : 'var(--gray-600)', fontSize: 13, fontWeight: 500, cursor: 'pointer' })
+  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: 'var(--card-bg)', color: 'var(--gray-800)', width: '100%' }
+  const btn = (active) => ({ padding: '7px 14px', border: `1px solid ${active ? 'var(--teal)' : 'var(--gray-200)'}`, borderRadius: 8, background: active ? 'var(--teal-bg)' : 'var(--card-bg)', color: active ? 'var(--teal-dark)' : 'var(--gray-600)', fontSize: 13, fontWeight: 500, cursor: 'pointer' })
 
   return (
     <div>
@@ -62,7 +62,7 @@ export default function TasksPage() {
       <p style={{ color: 'var(--gray-500)', fontSize: 14, marginBottom: '1.5rem' }}>Aaj kya karna hai — sab likho, sab karo</p>
 
       {/* Add task */}
-      <form onSubmit={addTask} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.25rem', boxShadow: 'var(--shadow)' }}>
+      <form onSubmit={addTask} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.25rem', boxShadow: 'var(--shadow)' }}>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 10 }}>
           <input style={{ ...inp, flex: 2, minWidth: 160 }} value={text} onChange={e => setText(e.target.value)} placeholder="Nayi task likho... (e.g. Percentage ke 20 questions karo)" />
           <select style={{ ...inp, flex: 0, width: 'auto', minWidth: 100 }} value={subject} onChange={e => setSubject(e.target.value)}>
@@ -91,14 +91,14 @@ export default function TasksPage() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {loading && <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--gray-400)' }}>Loading...</div>}
         {!loading && filtered.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: '#fff', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
+          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: 'var(--card-bg)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>📋</div>
             <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 4 }}>Koi task nahi</div>
             <div style={{ fontSize: 13 }}>Upar se naya task add karo</div>
           </div>
         )}
         {filtered.map(task => (
-          <div key={task.id} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', display: 'flex', alignItems: 'center', gap: 12, boxShadow: 'var(--shadow)', opacity: task.done ? 0.65 : 1, transition: 'opacity 0.2s' }}>
+          <div key={task.id} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', display: 'flex', alignItems: 'center', gap: 12, boxShadow: 'var(--shadow)', opacity: task.done ? 0.65 : 1, transition: 'opacity 0.2s' }}>
             <button onClick={() => toggleDone(task)} style={{ width: 22, height: 22, borderRadius: 6, border: `2px solid ${task.done ? 'var(--teal)' : 'var(--gray-300)'}`, background: task.done ? 'var(--teal)' : 'transparent', cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, color: '#fff', transition: 'all 0.15s' }}>
               {task.done ? '✓' : ''}
             </button>
@@ -106,7 +106,7 @@ export default function TasksPage() {
               <div style={{ fontSize: 14, fontWeight: 500, color: task.done ? 'var(--gray-400)' : 'var(--gray-800)', textDecoration: task.done ? 'line-through' : 'none', wordBreak: 'break-word' }}>{task.text}</div>
               <div style={{ display: 'flex', gap: 6, marginTop: 4, flexWrap: 'wrap' }}>
                 <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 20, background: `${SUBJECT_COLORS[task.subject]}18`, color: SUBJECT_COLORS[task.subject], fontWeight: 600 }}>{task.subject}</span>
-                <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 20, background: task.priority === 'high' ? '#fef2f2' : task.priority === 'medium' ? '#fffbeb' : '#f0fdf4', color: task.priority === 'high' ? '#ef4444' : task.priority === 'medium' ? '#f59e0b' : '#10b981', fontWeight: 600 }}>{task.priority}</span>
+                <span style={{ fontSize: 11, padding: '2px 8px', borderRadius: 20, background: task.priority === 'high' ? 'rgba(239,68,68,0.12)' : task.priority === 'medium' ? 'rgba(245,158,11,0.12)' : 'rgba(16,185,129,0.12)', color: task.priority === 'high' ? '#ef4444' : task.priority === 'medium' ? '#f59e0b' : '#10b981', fontWeight: 600 }}>{task.priority}</span>
                 <span style={{ fontSize: 11, color: 'var(--gray-400)' }}>{task.date}</span>
               </div>
             </div>

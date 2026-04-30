@@ -7,7 +7,7 @@ import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null
   return (
-    <div style={{ background: '#fff', border: '1px solid var(--gray-200)', borderRadius: 8, padding: '8px 12px', boxShadow: 'var(--shadow-md)' }}>
+    <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-200)', borderRadius: 8, padding: '8px 12px', boxShadow: 'var(--shadow-md)' }}>
       <div style={{ fontSize: 12, color: 'var(--gray-500)', marginBottom: 4 }}>{label}</div>
       <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--teal)' }}>{payload[0].value} hours</div>
     </div>
@@ -55,7 +55,7 @@ export default function AnalyticsPage() {
   const testData = tests.map(t => ({ name: format(new Date(t.date), 'dd MMM'), score: Math.round((t.score / t.total) * 100), test: t.test_name }))
 
   const statCard = (icon, label, value, color = 'var(--teal)') => (
-    <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1.25rem', boxShadow: 'var(--shadow)', textAlign: 'center' }}>
+    <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1.25rem', boxShadow: 'var(--shadow)', textAlign: 'center' }}>
       <div style={{ fontSize: 24, marginBottom: 6 }}>{icon}</div>
       <div style={{ fontFamily: 'var(--mono)', fontSize: 26, fontWeight: 700, color }}>{value}</div>
       <div style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 2 }}>{label}</div>
@@ -78,12 +78,12 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Study hours chart */}
-      <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.25rem', boxShadow: 'var(--shadow)' }}>
+      <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.25rem', boxShadow: 'var(--shadow)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: 8 }}>
           <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--gray-700)' }}>Study hours — Last {range} days</h3>
           <div style={{ display: 'flex', gap: 6 }}>
             {[7, 14, 30].map(r => (
-              <button key={r} onClick={() => setRange(r)} style={{ padding: '4px 12px', fontSize: 12, fontWeight: 500, border: `1px solid ${range === r ? 'var(--teal)' : 'var(--gray-200)'}`, borderRadius: 6, background: range === r ? 'var(--teal-bg)' : '#fff', color: range === r ? 'var(--teal-dark)' : 'var(--gray-500)', cursor: 'pointer' }}>{r}d</button>
+              <button key={r} onClick={() => setRange(r)} style={{ padding: '4px 12px', fontSize: 12, fontWeight: 500, border: `1px solid ${range === r ? 'var(--teal)' : 'var(--gray-200)'}`, borderRadius: 6, background: range === r ? 'var(--teal-bg)' : 'var(--card-bg)', color: range === r ? 'var(--teal-dark)' : 'var(--gray-500)', cursor: 'pointer' }}>{r}d</button>
             ))}
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function AnalyticsPage() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
         {/* Subject tasks bar chart */}
-        <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
+        <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
           <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--gray-700)', marginBottom: '1rem' }}>Tasks by subject</h3>
           {subjectData.length > 0 ? (
             <ResponsiveContainer width="100%" height={180}>
@@ -122,7 +122,7 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Mock test scores */}
-        <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
+        <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
           <h3 style={{ fontSize: 15, fontWeight: 600, color: 'var(--gray-700)', marginBottom: '1rem' }}>Mock test scores %</h3>
           {testData.length > 0 ? (
             <ResponsiveContainer width="100%" height={180}>

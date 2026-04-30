@@ -58,7 +58,7 @@ export default function SubjectsPage() {
             const pct = Math.round((done / total) * 100)
             return (
               <div key={subj.name} onClick={() => setSelected(subj.name)}
-                style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)', cursor: 'pointer', transition: 'transform 0.15s, box-shadow 0.15s' }}
+                style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)', cursor: 'pointer', transition: 'transform 0.15s, box-shadow 0.15s' }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-md)' }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = 'var(--shadow)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: '1rem' }}>
@@ -78,8 +78,8 @@ export default function SubjectsPage() {
         </div>
       ) : (
         <div>
-          <button onClick={() => setSelected(null)} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', background: '#fff', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 13, cursor: 'pointer', marginBottom: '1rem', color: 'var(--gray-600)' }}>← Wapas</button>
-          <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', boxShadow: 'var(--shadow)' }}>
+          <button onClick={() => setSelected(null)} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', background: 'var(--card-bg)', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 13, cursor: 'pointer', marginBottom: '1rem', color: 'var(--gray-600)' }}>← Wapas</button>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.5rem', boxShadow: 'var(--shadow)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: '1.5rem' }}>
               <span style={{ fontSize: 28 }}>{sel.icon}</span>
               <div>

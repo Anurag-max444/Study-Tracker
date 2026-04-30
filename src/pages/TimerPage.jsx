@@ -83,7 +83,7 @@ export default function TimerPage() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
         {/* Timer circle */}
-        <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '2rem', boxShadow: 'var(--shadow)', textAlign: 'center' }}>
+        <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '2rem', boxShadow: 'var(--shadow)', textAlign: 'center' }}>
           <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1.5rem' }}>
             <svg width={220} height={220} style={{ transform: 'rotate(-90deg)' }}>
               <circle cx={110} cy={110} r={r} fill="none" stroke="var(--gray-100)" strokeWidth={10} />
@@ -98,10 +98,10 @@ export default function TimerPage() {
           </div>
 
           <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: '1rem' }}>
-            <button onClick={toggle} style={{ padding: '12px 32px', background: running ? '#fff' : 'var(--teal)', color: running ? 'var(--teal)' : '#fff', border: `2px solid var(--teal)`, borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s' }}>
+            <button onClick={toggle} style={{ padding: '12px 32px', background: running ? 'var(--card-bg)' : 'var(--teal)', color: running ? 'var(--teal)' : '#fff', border: `2px solid var(--teal)`, borderRadius: 10, fontSize: 15, fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s' }}>
               {running ? '⏸ Pause' : '▶ Start'}
             </button>
-            <button onClick={reset} style={{ padding: '12px 20px', background: '#fff', color: 'var(--gray-500)', border: '1px solid var(--gray-200)', borderRadius: 10, fontSize: 15, cursor: 'pointer' }}>↺</button>
+            <button onClick={reset} style={{ padding: '12px 20px', background: 'var(--card-bg)', color: 'var(--gray-500)', border: '1px solid var(--gray-200)', borderRadius: 10, fontSize: 15, cursor: 'pointer' }}>↺</button>
           </div>
 
           <div style={{ display: 'flex', gap: 6, justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -113,7 +113,7 @@ export default function TimerPage() {
 
         {/* Stats */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
             <h3 style={{ fontSize: 13, fontWeight: 600, color: 'var(--gray-500)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '1rem' }}>Aaj ka report</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
               {[['Sessions done', sessions, '🍅'], ['Hours padha', todayHours.toFixed(1) + 'h', '⏰'], ['Goal progress', Math.min(100, Math.round((todayHours / 4) * 100)) + '%', '🎯'], ['Remaining', Math.max(0, 4 - todayHours).toFixed(1) + 'h', '⏳']].map(([l, v, i]) => (
@@ -137,7 +137,7 @@ export default function TimerPage() {
             </ul>
           </div>
 
-          <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', boxShadow: 'var(--shadow)' }}>
+          <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', boxShadow: 'var(--shadow)' }}>
             <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--gray-600)', marginBottom: 8 }}>Manual log karo</div>
             <div style={{ display: 'flex', gap: 8 }}>
               <input type="number" min="0" max="12" step="0.5" defaultValue={1} id="manual-hrs" style={{ flex: 1, padding: '8px 12px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none' }} />

@@ -38,7 +38,7 @@ export default function MockTestsPage() {
   const best = tests.reduce((b, t) => (t.score / t.total) > (b?.score / b?.total || 0) ? t : b, null)
   const latest = tests[0]
 
-  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: '#fff', width: '100%' }
+  const inp = { padding: '10px 14px', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 14, outline: 'none', background: 'var(--card-bg)', width: '100%' }
   const getPctColor = (pct) => pct >= 70 ? 'var(--green)' : pct >= 50 ? 'var(--amber)' : '#ef4444'
 
   return (
@@ -55,7 +55,7 @@ export default function MockTestsPage() {
             { icon: '🏆', label: 'Best score', value: best ? Math.round((best.score / best.total) * 100) + '%' : '-', color: 'var(--green)' },
             { icon: '📅', label: 'Last test', value: latest ? format(new Date(latest.date), 'dd MMM') : '-', color: 'var(--blue)' },
           ].map(s => (
-            <div key={s.label} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', textAlign: 'center', boxShadow: 'var(--shadow)' }}>
+            <div key={s.label} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem', textAlign: 'center', boxShadow: 'var(--shadow)' }}>
               <div style={{ fontSize: 22, marginBottom: 4 }}>{s.icon}</div>
               <div style={{ fontFamily: 'var(--mono)', fontSize: 22, fontWeight: 700, color: s.color }}>{s.value}</div>
               <div style={{ fontSize: 12, color: 'var(--gray-400)', marginTop: 2 }}>{s.label}</div>
@@ -65,7 +65,7 @@ export default function MockTestsPage() {
       )}
 
       {/* Add test form */}
-      <form onSubmit={addTest} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow)' }}>
+      <form onSubmit={addTest} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow)' }}>
         <h3 style={{ fontSize: 14, fontWeight: 600, color: 'var(--gray-600)', marginBottom: '1rem' }}>Naya test log karo</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 10, marginBottom: 10 }}>
           <input style={inp} value={form.test_name} onChange={e => setForm(f => ({ ...f, test_name: e.target.value }))} placeholder="Test name (e.g. Set-1)" required />
@@ -94,7 +94,7 @@ export default function MockTestsPage() {
           const pct = Math.round((test.score / test.total) * 100)
           const color = getPctColor(pct)
           return (
-            <div key={test.id} style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem 1.25rem', boxShadow: 'var(--shadow)', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <div key={test.id} style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius)', padding: '1rem 1.25rem', boxShadow: 'var(--shadow)', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
               <div style={{ width: 52, height: 52, borderRadius: 12, background: `${color}18`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--mono)', fontWeight: 700, fontSize: 16, color, flexShrink: 0 }}>{pct}%</div>
               <div style={{ flex: 1, minWidth: 120 }}>
                 <div style={{ fontWeight: 600, fontSize: 15, color: 'var(--gray-800)' }}>{test.test_name}</div>
@@ -113,7 +113,7 @@ export default function MockTestsPage() {
           )
         })}
         {!loading && tests.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: '#fff', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
+          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--gray-300)', background: 'var(--card-bg)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--gray-100)' }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🧪</div>
             <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--gray-400)', marginBottom: 4 }}>Koi test log nahi kiya</div>
             <div style={{ fontSize: 13 }}>Mock test deke upar form bhar do</div>

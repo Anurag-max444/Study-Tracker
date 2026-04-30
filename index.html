@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
       :root {
         --teal: #0d9488;
         --teal-light: #14b8a6;
@@ -32,6 +33,7 @@
         --gray-800: #1e293b;
         --gray-900: #0f172a;
         --card-bg: #ffffff;
+        --input-bg: #ffffff;
         --font: 'Plus Jakarta Sans', system-ui, sans-serif;
         --mono: 'Space Mono', monospace;
         --radius: 12px;
@@ -41,7 +43,7 @@
         --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
       }
 
-      /* === DARK MODE === */
+      /* ===== DARK MODE ===== */
       :root[data-theme="dark"] {
         --gray-50: #0f172a;
         --gray-100: #1e293b;
@@ -54,12 +56,13 @@
         --gray-800: #f1f5f9;
         --gray-900: #f8fafc;
         --card-bg: #1e293b;
+        --input-bg: #162032;
         --teal-bg: #0d2d2a;
         --teal-50: #134e4a;
         --blue-bg: #0c1a2e;
-        --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
-        --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
-        --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+        --shadow: 0 1px 3px rgba(0,0,0,0.4);
+        --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+        --shadow-lg: 0 10px 15px rgba(0,0,0,0.5);
       }
 
       body {
@@ -68,36 +71,40 @@
         color: var(--gray-800);
         line-height: 1.6;
         min-height: 100vh;
-        transition: background 0.2s, color 0.2s;
+        transition: background 0.25s ease, color 0.25s ease;
       }
 
-      /* Cards automatically dark ho jayenge */
-      :root[data-theme="dark"] div[style*="background: '#fff'"],
-      :root[data-theme="dark"] div[style*='background: "#fff"'] {
-        background: var(--card-bg) !important;
+      /* ===== GLOBAL DARK OVERRIDES ===== */
+      /* Inputs, selects, textareas */
+      :root[data-theme="dark"] input,
+      :root[data-theme="dark"] textarea,
+      :root[data-theme="dark"] select {
+        background: var(--input-bg) !important;
+        color: var(--gray-800) !important;
+        border-color: var(--gray-200) !important;
+        color-scheme: dark;
       }
 
-      /* Sab white backgrounds override */
-      :root[data-theme="dark"] * {
-        border-color: var(--gray-100);
+      /* Date input arrow/calendar icon color */
+      :root[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
       }
+
+      /* Recharts chart text */
+      :root[data-theme="dark"] .recharts-text { fill: var(--gray-500) !important; }
+      :root[data-theme="dark"] .recharts-cartesian-grid-horizontal line,
+      :root[data-theme="dark"] .recharts-cartesian-grid-vertical line {
+        stroke: var(--gray-200) !important;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
 
       #root { min-height: 100vh; }
       button { font-family: var(--font); cursor: pointer; }
       input, textarea, select { font-family: var(--font); }
-
-      /* Dark mode mein inputs */
-      :root[data-theme="dark"] input,
-      :root[data-theme="dark"] textarea,
-      :root[data-theme="dark"] select {
-        background: var(--gray-100) !important;
-        color: var(--gray-800) !important;
-        border-color: var(--gray-200) !important;
-      }
-
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: transparent; }
-      ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 3px; }
     </style>
   </head>
   <body>

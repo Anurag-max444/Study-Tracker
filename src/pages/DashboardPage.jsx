@@ -13,7 +13,7 @@ const QUOTES = [
 ]
 
 const StatCard = ({ icon, label, value, sub, color = 'var(--teal)' }) => (
-  <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
+  <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
       <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--gray-400)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{label}</span>
       <span style={{ fontSize: 20 }}>{icon}</span>
@@ -79,7 +79,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Weekly streak calendar */}
-      <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow)' }}>
+      <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow)' }}>
         <h3 style={{ fontSize: 14, fontWeight: 600, color: 'var(--gray-600)', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Is hafte ka record</h3>
         <div style={{ display: 'flex', gap: 8, justifyContent: 'space-between' }}>
           {weekDays.map((day, i) => {
@@ -101,7 +101,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick actions */}
-      <div style={{ background: '#fff', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
+      <div style={{ background: 'var(--card-bg)', border: '1px solid var(--gray-100)', borderRadius: 'var(--radius-lg)', padding: '1.25rem', boxShadow: 'var(--shadow)' }}>
         <h3 style={{ fontSize: 14, fontWeight: 600, color: 'var(--gray-600)', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Quick actions</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: 10 }}>
           {[
