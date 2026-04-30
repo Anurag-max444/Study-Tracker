@@ -26,7 +26,7 @@ export default function Layout() {
   }
 
   const SidebarContent = () => (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: 'var(--gray-50)' }}>
       <div style={{ padding: '1.5rem 1.25rem 1rem', borderBottom: '1px solid var(--gray-100)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 36, height: 36, background: 'linear-gradient(135deg, var(--teal), var(--blue))', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, flexShrink: 0 }}>📚</div>
@@ -36,8 +36,7 @@ export default function Layout() {
           </div>
         </div>
       </div>
-
-      <nav style={{ flex: 1, padding: '0.75rem 0.75rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <nav style={{ flex: 1, padding: '0.75rem', display: 'flex', flexDirection: 'column', gap: 2 }}>
         {navItems.map(item => (
           <NavLink key={item.to} to={item.to} end={item.exact}
             onClick={() => setMobileOpen(false)}
@@ -53,31 +52,18 @@ export default function Layout() {
           </NavLink>
         ))}
       </nav>
-
       <div style={{ padding: '1rem', borderTop: '1px solid var(--gray-100)' }}>
         <div style={{ fontSize: 12, color: 'var(--gray-400)', marginBottom: 8, padding: '0 4px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           {user?.email}
         </div>
-        <button onClick={handleSignOut} style={{ width: '100%', padding: '8px 12px', background: 'transparent', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 13, color: 'var(--gray-500)', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8 }}>
         <button
           onClick={toggle}
-          style={{
-            width: '100%',
-            padding: '8px 12px',
-            background: 'transparent',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 8,
-            fontSize: 13,
-            color: 'var(--gray-500)',
-            cursor: 'pointer',
-            textAlign: 'left',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            marginBottom: 8
-          }}>
+          style={{ width: '100%', padding: '8px 12px', background: 'transparent', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 13, color: 'var(--gray-500)', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
           {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
         </button>
+        <button
+          onClick={handleSignOut}
+          style={{ width: '100%', padding: '8px 12px', background: 'transparent', border: '1px solid var(--gray-200)', borderRadius: 8, fontSize: 13, color: 'var(--gray-500)', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 8 }}>
           🚪 Logout
         </button>
       </div>
@@ -86,47 +72,29 @@ export default function Layout() {
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--gray-50)' }}>
-      {/* Desktop Sidebar */}
-      <aside style={{ width: 220, background: '#fff', borderRight: '1px solid var(--gray-100)', position: 'fixed', top: 0, left: 0, height: '100vh', zIndex: 50, display: 'none', flexDirection: 'column' }} className="desktop-sidebar">
+      <aside style={{ width: 220, background: 'var(--gray-50)', borderRight: '1px solid var(--gray-100)', position: 'fixed', top: 0, left: 0, height: '100vh', zIndex: 50, display: 'none', flexDirection: 'column' }} className="desktop-sidebar">
         <SidebarContent />
       </aside>
-
-      {/* Mobile header */}
-      <header style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 56, background: '#fff', borderBottom: '1px solid var(--gray-100)', display: 'flex', alignItems: 'center', padding: '0 1rem', gap: 12, zIndex: 40 }}>
-        <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', padding: 4 }}>☰</button>
-        <div style={{ fontFamily: 'var(--mono)', fontWeight: 700, color: 'var(--teal-dark)', fontSize: 16 }}>📚 StudyVault
+      <header style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 56, background: 'var(--gray-50)', borderBottom: '1px solid var(--gray-100)', display: 'flex', alignItems: 'center', padding: '0 1rem', gap: 12, zIndex: 40 }}>
+        <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', padding: 4, color: 'var(--gray-700)' }}>☰</button>
+        <div style={{ fontFamily: 'var(--mono)', fontWeight: 700, color: 'var(--teal-dark)', fontSize: 16 }}>📚 StudyVault</div>
         <button
           onClick={toggle}
-          style={{
-            marginLeft: 'auto',
-            background: 'none',
-            border: '1px solid var(--gray-200)',
-            borderRadius: 8,
-            padding: '5px 10px',
-            cursor: 'pointer',
-            fontSize: 16,
-            color: 'var(--gray-600)'
-          }}>
+          style={{ marginLeft: 'auto', background: 'none', border: '1px solid var(--gray-200)', borderRadius: 8, padding: '5px 10px', cursor: 'pointer', fontSize: 16, color: 'var(--gray-600)' }}>
           {theme === 'light' ? '🌙' : '☀️'}
         </button>
-        </div>
       </header>
-
-      {/* Mobile Drawer */}
       {mobileOpen && (
         <>
           <div onClick={() => setMobileOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.3)', zIndex: 60 }} />
-          <aside style={{ position: 'fixed', top: 0, left: 0, width: 240, height: '100vh', background: '#fff', zIndex: 70, boxShadow: 'var(--shadow-lg)' }}>
+          <aside style={{ position: 'fixed', top: 0, left: 0, width: 240, height: '100vh', background: 'var(--gray-50)', zIndex: 70, boxShadow: 'var(--shadow-lg)' }}>
             <SidebarContent />
           </aside>
         </>
       )}
-
-      {/* Main content */}
       <main style={{ flex: 1, marginTop: 56, padding: '1.5rem 1rem', maxWidth: '100%' }}>
         <Outlet />
       </main>
-
       <style>{`
         @media (min-width: 768px) {
           .desktop-sidebar { display: flex !important; }
